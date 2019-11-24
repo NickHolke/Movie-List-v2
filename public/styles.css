@@ -36,7 +36,7 @@ input {
 
 #movie {
     font-size: 40px;
-    width: 400px;
+    width: 600px;
     margin-bottom: 10px;
     margin-left: 5px;
     padding-left: 5px;
@@ -53,3 +53,17 @@ input {
     cursor: pointer;
 }
 
+#poster {
+    float: left;
+    height: 200px;
+    margin-right: 10px;
+}
+
+#movie-info {
+    font-size: 25px;
+}
+
+#watched-button {
+    font-size:20px;
+    margin: 2px;
+}
