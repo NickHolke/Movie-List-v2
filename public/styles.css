@@ -1,6 +1,8 @@
 input {
     font-size: 30px;
     height: 40px;
+    margin-left: 5px;
+    margin-bottom: 10px;
 }
 
 button {
@@ -9,10 +11,9 @@ button {
     margin-left: 4px;
 }
 
-#search-container {
-    margin-left: 5px;
-    margin-bottom: 10px;
-}
+/* #search-container {
+    
+} */
 
 #movie {
     font-size: 40px;

@@ -13,10 +13,10 @@ class App extends React.Component {
         }
 
         this.searchHandler = this.searchHandler.bind(this);
+        this.inputHandler = this.inputHandler.bind(this);
     }
 
     searchHandler(term) {
-        console.log(term)
         let newMovies = this.state.movies.map((movie) => {
             if (!movie.title.toLowerCase().includes(term.toLowerCase())) {
                 movie.display = false;
@@ -28,10 +28,18 @@ class App extends React.Component {
         })
     }
 
+    inputHandler(title) {
+        this.setState((state) => {
+             return {
+                movies: state.movies.concat([{title: title, display: true}])
+            }
+        })   
+    }
+
     render() {
         return (
             <div>
-                <AddMovie/>
+                <AddMovie inputHandler={this.inputHandler}/>
                 <Search searchHandler={this.searchHandler}/>
                 <div id="movies-container">
                     {this.state.movies.map((movie, idx) => {

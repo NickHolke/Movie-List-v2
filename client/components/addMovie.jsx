@@ -6,14 +6,28 @@ class AddMovie extends React.Component {
         super(props)
 
         this.state = {
-            term: ''
+            title: ''
         }
+
+        this.changeHandler = this.changeHandler.bind(this);
+    }
+
+    changeHandler(e) {
+        this.setState({
+            title: e.target.value
+        })
     }
 
     render() {
         return (
             <div id="add-movie-container">
-                <input></input>
+                <input placeholder="Add a movie" value={this.state.title}
+                onChange={this.changeHandler}>
+                </input>
+                <button onClick={() => {
+                    this.props.inputHandler(this.state.title);
+                    this.setState({title: ''})
+                    }}>Add Movie</button>
             </div>
         )   
     }
