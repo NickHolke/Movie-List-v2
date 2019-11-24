@@ -16,6 +16,7 @@ class App extends React.Component {
         this.searchHandler = this.searchHandler.bind(this);
         this.inputHandler = this.inputHandler.bind(this);
         this.tabHandler = this.tabHandler.bind(this);
+        this.watchedHandler = this.watchedHandler.bind(this);
     }
 
     searchHandler(term) {
@@ -47,15 +48,29 @@ class App extends React.Component {
         this.setState({tab: e.target.name})
     }
 
+    watchedHandler(movieData) {
+        //console.log(movieData)
+        let newMovies = this.state.movies.map((movie) => {
+            if (movie.title === movieData.title) {
+                movie.watched = !movie.watched;
+            }
+            return movie;
+        })
+
+        this.setState({
+            movies: newMovies
+        })
+    } 
+
     render() {
         return (
             <div>
                 <AddMovie inputHandler={this.inputHandler}/>
                 <Search searchHandler={this.searchHandler}/>
-                <button className='tabs' name="All Movies" onClick={this.tabHandler}>All Movies</button>
-                <button className='tabs' name="Watched" onClick={this.tabHandler}>Watched</button>
-                <button className='tabs' name="Not Watched" onClick={this.tabHandler}>Not Watched</button>
-                <Tabs movies={this.state.movies} tab={this.state.tab}/>
+                <button className={this.state.tab === "All Movies" ? "tabs selected" : "tabs"} name="All Movies" onClick={this.tabHandler}>All Movies</button>
+                <button className={this.state.tab === "Watched" ? "tabs selected" : "tabs"} name="Watched" onClick={this.tabHandler}>Watched</button>
+                <button className={this.state.tab === "Not Watched" ? "tabs selected" : "tabs"} name="Not Watched" onClick={this.tabHandler}>Not Watched</button>
+                <Tabs movies={this.state.movies} tab={this.state.tab} watchedHandler={this.watchedHandler}/>
             </div>
         )
     }

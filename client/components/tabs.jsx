@@ -1,13 +1,13 @@
 import React from 'react';
 import Movie from './movie.jsx';
 
-const Tabs = ({movies, tab}) => {
+const Tabs = ({movies, tab, watchedHandler}) => {
     if (tab === 'Watched') {
         return (
         <div id="movies-container">
             {movies.map((movie, idx) => {
                 if (movie.watched && movie.display) {
-                    return <Movie movieData={movie} key={idx}/>
+                    return <Movie movieData={movie} watchedHandler={watchedHandler} key={idx}/>
                 }
              })}
         </div>
@@ -17,7 +17,7 @@ const Tabs = ({movies, tab}) => {
         <div id="movies-container">
             {movies.map((movie, idx) => {
                 if (!movie.watched && movie.display) {
-                    return <Movie movieData={movie} key={idx}/>
+                    return <Movie movieData={movie} watchedHandler={watchedHandler} key={idx}/>
                 }
             })}
         </div>
@@ -27,7 +27,7 @@ const Tabs = ({movies, tab}) => {
         <div id="movies-container">
             {movies.map((movie, idx) => {
                 if (movie.display) {
-                    return <Movie movieData={movie} key={idx}/>
+                    return <Movie movieData={movie} watchedHandler={watchedHandler} key={idx}/>
                 }
             })}
         </div>

@@ -29,6 +29,11 @@ input {
     cursor:pointer;
 }
 
+.selected {
+    background: green;
+    color: white;
+}
+
 #movie {
     font-size: 40px;
     width: 400px;
