@@ -1,6 +1,7 @@
 import React from 'react';
 import Movie from './movie.jsx';
 import Search from './search.jsx';
+import AddMovie from './addMovie.jsx';
 
 class App extends React.Component {
     constructor(props) {
@@ -8,11 +9,6 @@ class App extends React.Component {
 
         this.state = {
             movies : [
-                {title: 'Mean Girls', display: true},
-                {title: 'Hackers', display: true},
-                {title: 'The Grey', display: true},
-                {title: 'Sunshine', display: true},
-                {title: 'Ex Machina', display: true},
             ]
         }
 
@@ -20,6 +16,7 @@ class App extends React.Component {
     }
 
     searchHandler(term) {
+        console.log(term)
         let newMovies = this.state.movies.map((movie) => {
             if (!movie.title.toLowerCase().includes(term.toLowerCase())) {
                 movie.display = false;
@@ -34,6 +31,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <AddMovie/>
                 <Search searchHandler={this.searchHandler}/>
                 <div id="movies-container">
                     {this.state.movies.map((movie, idx) => {
