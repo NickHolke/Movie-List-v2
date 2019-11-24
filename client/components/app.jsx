@@ -25,6 +25,20 @@ class App extends React.Component {
         this.watchedHandler = this.watchedHandler.bind(this);
     }
 
+    componentDidMount() {
+        axios.get('/movies').then((movies) => {
+            let savedMovies = movies.data.map((movie) => {
+                movie.display = true;
+                movie.watched = false;
+                return movie;
+            })
+            this.setState({
+                movies: savedMovies
+            })
+        })
+        .catch((err) => console.log(err))
+    }
+
     searchHandler(term) {
         let newMovies = this.state.movies.map((movie) => {
             if (!movie.title.toLowerCase().includes(term.toLowerCase())) {
@@ -62,11 +76,12 @@ class App extends React.Component {
                        movies: state.movies.concat([movie]),
                        notFound: null
                    }
-               })  
+               })
+               return movie;  
             } 
         })
+        .then((movie) => axios.post('/movie', movie).then((response) => console.log(response)))
         .catch((err) => console.log(err))
-        
     }
 
     tabHandler(e) {
