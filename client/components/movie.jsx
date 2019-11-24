@@ -1,7 +1,17 @@
 import React from 'react';
 
-const Movie = ({movieData}) => (
-    <div id='movie'><span id="title">{movieData.title}</span></div>
-)
+class Movie extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div id='movie'><span id="title">{this.props.movieData.title}</span></div>
+        )
+    }
+} 
+    
+
 
 export default Movie;
