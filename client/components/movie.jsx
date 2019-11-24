@@ -19,7 +19,8 @@ class Movie extends React.Component {
     render() {
         return (
             <div id='movie'>
-                <span id="title" onClick={this.clickHandler}>{this.props.movieData.title}</span>   
+                <span id="title" onClick={this.clickHandler}>{this.props.movieData.title}</span>
+                <button id="delete-button" onClick={()=> this.props.deleteHandler(this.props.movieData)}>Delete</button>   
                 {this.state.clicked ? 
                 <MovieInfo movieData={this.props.movieData} watchedHandler={this.props.watchedHandler}/>
                 : null} 

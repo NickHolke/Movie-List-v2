@@ -23,7 +23,18 @@ let getAll = () => {
     return Movie.find().exec();
 }
 
+let remove = (title, callback) => {
+    Movie.deleteOne({title: title}, (err) => {
+        if (err) {
+            callback(err)
+        } else {
+            callback(null, err)
+        }
+    })
+}
+
 module.exports = {
     save: save,
-    getAll: getAll
+    getAll: getAll,
+    remove: remove
 }

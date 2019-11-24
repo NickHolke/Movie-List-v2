@@ -29,4 +29,17 @@ app.get('/movies', (req, res) => {
     })
 })
 
+app.delete('/movie', (req, res) => {
+    let title = req.body.title;
+    db.remove(title, (err, results) => {
+        if (err) {
+            res.status(400);
+            res.send(err);
+        } else {
+            res.status(200);
+            res.send('movie deleted');
+        }
+    })
+})
+
 app.listen(port, () => console.log(`listening on port ${port}`));

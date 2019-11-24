@@ -23,6 +23,7 @@ class App extends React.Component {
         this.inputHandler = this.inputHandler.bind(this);
         this.tabHandler = this.tabHandler.bind(this);
         this.watchedHandler = this.watchedHandler.bind(this);
+        this.deleteHandler = this.deleteHandler.bind(this);
     }
 
     componentDidMount() {
@@ -108,6 +109,23 @@ class App extends React.Component {
         })
     } 
 
+    deleteHandler(currMovie) {
+        let filteredMovies = this.state.movies
+        .filter((movie) => movie.title !== currMovie.title);
+
+        this.setState({
+            movies: filteredMovies
+        })
+
+        axios({
+            method: 'delete',
+            url: '/movie',
+            data: {
+                title: currMovie.title
+            }
+        }).then((response) => console.log(response))
+    }
+
     render() {
         return (
             <div>
@@ -117,7 +135,8 @@ class App extends React.Component {
                 <button className={this.state.tab === "All Movies" ? "tabs selected" : "tabs"} name="All Movies" onClick={this.tabHandler}>All Movies</button>
                 <button className={this.state.tab === "Watched" ? "tabs selected" : "tabs"} name="Watched" onClick={this.tabHandler}>Watched</button>
                 <button className={this.state.tab === "Not Watched" ? "tabs selected" : "tabs"} name="Not Watched" onClick={this.tabHandler}>Not Watched</button>
-                <Tabs movies={this.state.movies} tab={this.state.tab} watchedHandler={this.watchedHandler}/>
+                <Tabs movies={this.state.movies} tab={this.state.tab} 
+                watchedHandler={this.watchedHandler} deleteHandler={this.deleteHandler}/>
             </div>
         )
     }
