@@ -23,7 +23,7 @@ class AddMovie extends React.Component {
                 <input placeholder="Add a movie" value={this.state.title}
                 onChange={this.changeHandler}>
                 </input>
-                <button onClick={() => {
+                <button className="submit-button" onClick={() => {
                     this.props.inputHandler(this.state.title);
                     this.setState({title: ''})
                     }}>Add Movie</button>

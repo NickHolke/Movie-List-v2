@@ -44,7 +44,7 @@ class App extends React.Component {
     }
 
     tabHandler(e) {
-        console.log(e.target.innerHTML)
+        this.setState({tab: e.target.name})
     }
 
     render() {
@@ -52,9 +52,9 @@ class App extends React.Component {
             <div>
                 <AddMovie inputHandler={this.inputHandler}/>
                 <Search searchHandler={this.searchHandler}/>
-                <div className='tabs' onClick={this.tabHandler}>All Movies</div>
-                <div className='tabs' onClick={this.tabHandler}>Watched</div>
-                <div className='tabs' onClick={this.tabHandler}>Not Watched</div>
+                <button className='tabs' name="All Movies" onClick={this.tabHandler}>All Movies</button>
+                <button className='tabs' name="Watched" onClick={this.tabHandler}>Watched</button>
+                <button className='tabs' name="Not Watched" onClick={this.tabHandler}>Not Watched</button>
                 <Tabs movies={this.state.movies} tab={this.state.tab}/>
             </div>
         )

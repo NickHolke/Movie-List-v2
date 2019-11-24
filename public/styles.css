@@ -9,7 +9,7 @@ input {
     margin-bottom: 10px;
 }
 
-button {
+.submit-button {
     font-size: 31px;
     height: 45px; 
     margin-left: 4px;
@@ -36,7 +36,7 @@ button {
     margin-left: 5px;
     padding-left: 5px;
     box-shadow: 2px 2px 2px 1px grey;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;   
 }
 
 #movie:hover {
